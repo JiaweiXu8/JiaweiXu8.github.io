@@ -65,6 +65,15 @@
     background-color: transparent;
   }
 
+  &--outline {
+    border: 1px solid var(--global-base-color) !important; /* override*/
+    background-color: transparent;
+    color: var(--global-base-color) !important;
+    &:hover {
+      background-color: mix(white, #000000, 80%);
+    }
+  }
+
   /* information */
 
   &--info {
@@ -150,6 +159,6 @@
   /* small button */
 
   &--small {
-    font-size: $type-size-7;
+    font-size: $type-size-8;
   }
 }

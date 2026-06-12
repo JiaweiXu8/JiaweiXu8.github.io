@@ -1,0 +1,26 @@
+---
+permalink: /biography/
+title: 
+author_profile: true
+---
+
+{% include base_path %}
+
+<!-- Biography -->
+{% assign post = site.biographies[0] %}
+{% include archive-single.html %}
+<hr>
+
+<!-- Education -->
+{% assign post = site.biographies[1] %}
+{% include archive-single.html %}
+<hr>
+
+<!-- Internship -->
+{% assign post = site.biographies[2] %}
+{% include archive-single.html %}
+<hr>
+
+<!-- Activities -->
+{% assign post = site.biographies[4] %}
+{% include archive-single.html %}

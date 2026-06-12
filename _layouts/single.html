@@ -37,40 +37,74 @@ layout: default
         {% if page.collection == 'teaching' %}
           <p> {{ page.type }}, <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif page.venue and page.date %}
-          <p>Published in <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
+          <div><i>{{ page.venue }}, {{ page.date | default: "1900-01-01" | date: "%Y" }}</i> </div>
         {% elsif page.date %}
           <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
-        {% endif %}    
+        {% endif %}
+
+        {% if page.collection == 'publications' and page.authors %}
+          <div>{{ page.authors | markdownify | remove: "<p>" | remove: "</p>" }}</div><br>
+        {% endif %}
         </header>
       {% endunless %}
+
+      {% if page.citation %}
+        <p>Recommended citation: {{ page.citation }}<br>
+      {% endif %}
+      {% if page.projecturl %}
+        <a href="{{ page.projecturl }}" class="btn btn--small" style="text-decoration: none;">Website</a>&nbsp;
+      {% endif %}
+      {% if page.paperurl %}
+        <a href="{{ page.paperurl }}" class="btn btn--small" style="text-decoration: none;">Paper</a>&nbsp;
+      {% endif %}
+      {% if page.arxivurl %}
+        <a href="{{ page.arxivurl }}" class="btn btn--small" style="text-decoration: none;">Arxiv</a>&nbsp;
+      {% endif %}
+      {% if page.codeurl %}
+        <a href="{{ page.codeurl }}" class="btn btn--small" style="text-decoration: none;">Code</a>&nbsp;
+      {% endif %}
+      {% if page.dataurl %}
+        <a href="{{ page.dataurl }}" class="btn btn--small" style="text-decoration: none;">Data</a>&nbsp;
+      {% endif %}
+      {% if page.slidesurl %}
+        <a href="{{ page.slidesurl }}" class="btn btn--small" style="text-decoration: none;">Slides</a>&nbsp;
+      {% endif %}
+      {% if page.posterurl %}
+        <a href="{{ page.posterurl }}" class="btn btn--small" style="text-decoration: none;">Poster</a>&nbsp;
+      {% endif %}
+      {% if page.bibtexurl %}
+        <a href="{{ page.bibtexurl }}" class="btn btn--small" style="text-decoration: none;">BibTex</a>&nbsp;
+      {% endif %}
 
       <section class="page__content" itemprop="text">
         {{ content }}
 
-        {% if page.citation and page.paperurl and page.slidesurl and page.bibtexurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.slidesurl }}">Download Slides</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.citation and page.paperurl and page.slidesurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.slidesurl }}">Download Slides</a></p>
-        {% elsif page.citation and page.paperurl and page.bibtexurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.citation and page.paperurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">Download Paper</a></p>
-        {% elsif page.citation and page.slidesurl and page.bibtexurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.slidesurl }}">Download Slides</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.citation and page.slidesurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.slidesurl }}">Download Slides</a></p>
-        {% elsif page.slidesurl and page.bibtexurl %}
-          <p style="font-size: smaller"><a href="{{ page.slidesurl }}">Download Slides</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.paperurl and page.bibtexurl %}
-          <p style="font-size: smaller"><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.citation and page.bibtexurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.citation %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}</p>
-        {% elsif page.slidesurl %}
-          <p style="font-size: smaller"><a href="{{ page.slidesurl }}">Download Slides</a></p>
-        {% elsif page.bibtexurl %}
-          <p style="font-size: smaller"><a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
+        {% if page.citation %}
+          <p>Recommended citation: {{ page.citation }}<br>
+        {% endif %}
+        {% if page.projecturl %}
+          <a href="{{ page.projecturl }}" class="btn btn--small" style="text-decoration: none;">Website</a>&nbsp;
+        {% endif %}
+        {% if page.paperurl %}
+          <a href="{{ page.paperurl }}" class="btn btn--small" style="text-decoration: none;">Paper</a>&nbsp;
+        {% endif %}
+        {% if page.arxivurl %}
+          <a href="{{ page.arxivurl }}" class="btn btn--small" style="text-decoration: none;">Arxiv</a>&nbsp;
+        {% endif %}
+        {% if page.codeurl %}
+          <a href="{{ page.codeurl }}" class="btn btn--small" style="text-decoration: none;">Code</a>&nbsp;
+        {% endif %}
+        {% if page.dataurl %}
+          <a href="{{ page.dataurl }}" class="btn btn--small" style="text-decoration: none;">Data</a>&nbsp;
+        {% endif %}
+        {% if page.slidesurl %}
+          <a href="{{ page.slidesurl }}" class="btn btn--small" style="text-decoration: none;">Slides</a>&nbsp;
+        {% endif %}
+        {% if page.posterurl %}
+          <a href="{{ page.posterurl }}" class="btn btn--small" style="text-decoration: none;">Poster</a>&nbsp;
+        {% endif %}
+        {% if page.bibtexurl %}
+          <a href="{{ page.bibtexurl }}" class="btn btn--small" style="text-decoration: none;">BibTex</a>&nbsp;
         {% endif %}
 
         {% if page.link %}<div><a href="{{ page.link }}" class="btn">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
@@ -91,6 +125,7 @@ layout: default
     {% if site.comments.provider and page.comments %}
       {% include comments.html %}
     {% endif %}
+
   </article>
 
   {% comment %}<!-- only show related on a post page when not disabled -->{% endcomment %}

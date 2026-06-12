@@ -1,0 +1,43 @@
+---
+permalink: /
+title: Jiawei Xu ( 许家威 )
+author_profile: true
+redirect_from: 
+  - /about/
+  - /about.html
+---
+<hr>
+
+{% include base_path %}
+
+<!-- Biography -->
+{% assign post = site.biographies[0] %}
+{% include archive-single.html %}
+<hr>
+
+<!-- News -->
+{% assign post = site.biographies[3] %}
+{% include archive-single.html %}
+<hr>
+
+<!-- Education -->
+{% assign post = site.biographies[1] %}
+{% include archive-single.html %}
+<hr>
+
+<!-- Internship -->
+{% assign post = site.biographies[2] %}
+{% include archive-single.html %}
+<hr>
+
+<!-- Activities -->
+{% assign post = site.biographies[4] %}
+{% include archive-single.html %}
+<hr>
+
+<!-- Publicaction -->
+<h1 class="page__title" itemprop="headline">Recent Publications</h2>
+{% assign reversed_publications = site.publications | reverse %}
+{% for post in reversed_publications limit: 5 %}
+  {% include archive-single.html %}
+{% endfor %}
